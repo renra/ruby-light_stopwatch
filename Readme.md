@@ -24,7 +24,7 @@ end
 
 You can also include Stopwatch as a module
 
-```
+```ruby
 class MyObject
   include LS
 
