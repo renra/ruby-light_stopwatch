@@ -1,0 +1,4 @@
+.env
+*.gem
+.DS_Store
+Gemfile.lock
