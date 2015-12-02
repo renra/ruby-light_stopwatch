@@ -1,0 +1,10 @@
+# This references the default Ruby container from
+# the Docker Hub.
+ruby:2.2.3
+box: ruby
+build:
+    steps:
+        - bundle-install
+        - script:
+            name: rspec
+            code: bundle exec rspec

@@ -28,20 +28,6 @@ end
 => 10
 ```
 
-You can also include Stopwatch as a module
-
-```ruby
-class MyObject
-  include LS
-
-  def do_stuff
-    measure do
-      # do more stuff
-    end
-  end
-end
-```
-
 ##Customizing output
 
 If you're not happy with the default `Operation took:` output or you want to separate multiple measurements you can customize like this:
@@ -51,6 +37,39 @@ LS.measure('my_stuff:') do
   # task you want profiled
 end
 => my_stuff: 10
+```
+
+##Aggregations
+
+If you want to measure a total time spent in a part of your code you need an aggregation.
+
+```ruby
+100.times do
+  LS.agg(:foo) do
+    sleep(0.01)
+  end
+end
+
+10.times do
+  LS.agg(:bar) do
+    sleep(1)
+  end
+end
+
+LS.get_aggs
+=> {:foo=>{:value=>1.16, :count=>100}, :bar=>{:value=>10.039352, :count=>10}}  # time measurements of sleep vary
+
+LS.get_agg(:foo)
+=> {:value=>1.16, :count=>100}
+
+LS.get_agg(:bar)
+=> {:value=>10.039352, :count=>10}
+
+LS.get_agg_value(:bar)
+=> 10.039352
+
+LS.get_agg_count(:bar)
+=> 10
 ```
 
 
