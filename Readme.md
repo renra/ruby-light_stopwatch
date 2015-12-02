@@ -42,4 +42,16 @@ class MyObject
 end
 ```
 
+##Customizing output
+
+If you're not happy with the default `Operation took:` output or you want to separate multiple measurements you can customize like this:
+
+```ruby
+LS.measure('my_stuff:') do
+  # task you want profiled
+end
+=> my_stuff: 10
+```
+
+
 **Enjoy**!

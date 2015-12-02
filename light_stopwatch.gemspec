@@ -1,6 +1,6 @@
 Gem::Specification.new do |spec|
   spec.name = "light_stopwatch"
-  spec.version = "1.0.0"
+  spec.version = "1.1.0"
   spec.files = ["lib/light_stopwatch.rb"]
   spec.authors = ["Jan Renra Gloser"]
   spec.email = ["jan.renra.gloser@gmail.com"]
