@@ -43,7 +43,7 @@ end
 
 ##Aggregations
 
-If you want to measure a total time spent in a codepath that is called multipler times you need an aggregation.
+If you want to measure a total time spent in a codepath that is called multiple times you need an aggregation.
 
 ```ruby
 100.times do
