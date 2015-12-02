@@ -1,3 +1,5 @@
+[![wercker status](https://app.wercker.com/status/676f639c9e4b29ec7b6cbcc15bb96cad/m "wercker status")](https://app.wercker.com/project/bykey/676f639c9e4b29ec7b6cbcc15bb96cad)
+
 # Light Stopwatch
 
 This is a more lightweight alternative to ruby-prof that handles only time measurements.
