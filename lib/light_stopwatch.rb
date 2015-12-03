@@ -9,8 +9,12 @@ class LightStopwatch
   def self.agg(key, &block)
     @@ls_aggs[key] ||= agg_template
 
+    results = get_time(&block)
+
     @@ls_aggs[key][:count] += 1
-    @@ls_aggs[key][:value] += get_time(&block)
+    @@ls_aggs[key][:value] += results[:took]
+
+    results[:retval]
   end
 
   def self.get_aggs
@@ -31,14 +35,17 @@ class LightStopwatch
 
   def self.get_time(&block)
     start = Time.now
-      yield
+      retval = yield
     stop = Time.now
 
-    stop - start
+    {took: (stop - start), retval: retval}
   end
 
   def self.measure(tag = DEFAULT_TAG, &block)
-    puts "#{tag} #{get_time(&block)}"
+    results = get_time(&block)
+    puts "#{tag} #{results[:took]}"
+
+    results[:retval]
   end
 
   def self.reset

@@ -1,31 +1,48 @@
 require_relative '../lib/light_stopwatch'
 
 describe LightStopwatch do
+  let(:retval) { 'foo' }
+
   after do
     LS.reset
   end
 
   describe '.get_time' do
-    subject { LS.get_time { sleep(0.01) } }
+    subject {
+      LS.get_time do
+        sleep(0.01)
+        retval
+      end
+    }
 
-    it { expect(subject).to be > 0 }
+    it { expect(subject[:took]).to be > 0 }
+    it { expect(subject[:retval]).to eql retval }
   end
 
   describe '.measure' do
-    subject { LS.measure { sleep(0.01) } }
 
-    # Returns nothing
-    it { expect(subject).to eql nil }
+    subject {
+      LS.measure do
+        sleep(0.01)
+        retval
+      end
+    }
+
+    it { expect(subject).to eql retval }
   end
 
-  describe '.agg, .get_aggs, .get_agg, .get_agg_value, .get_agg_count' do
+  describe '.agg' do
     before do
-      allow(LS).to receive(:get_time).and_return(1.5)
+      allow(LS).to receive(:get_time).and_return(took: 1.5, retval: 'foo')
 
       LS.agg(:foo) {}
       LS.agg(:foo) {}
       LS.agg(:bar) {}
     end
+
+    it {
+      expect(LS.agg(:foo) { retval }).to eql retval
+    }
 
     describe '.get_aggs' do
       subject { LS.get_aggs }

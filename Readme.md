@@ -18,7 +18,8 @@ You can use the `LightStopwatch` module or `LS` as a shortcut
 LS.measure do
   # task you want profiled
 end
-=> Operation took: 10
+Operation took: 10
+=> 'whateber you returned'
 ```
 
 If you want to get only the time ...
@@ -27,7 +28,7 @@ If you want to get only the time ...
 LS.get_time do
   # task you want profiled
 end
-=> 10
+=> { :took => 10.00xx, retval => 'whatever you returned' }
 ```
 
 ##Customizing output
@@ -38,7 +39,8 @@ If you're not happy with the default `Operation took:` output or you want to sep
 LS.measure('my_stuff:') do
   # task you want profiled
 end
-=> my_stuff: 10
+my_stuff: 10
+=> 'whatever you returned'
 ```
 
 ##Aggregations
@@ -73,6 +75,8 @@ LS.get_agg_value(:bar)
 LS.get_agg_count(:bar)
 => 10
 ```
+
+`LS.agg` also returns whatever the inner block returns
 
 
 **Enjoy**!
