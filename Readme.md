@@ -19,7 +19,7 @@ LS.measure do
   # task you want profiled
 end
 Operation took: 10
-=> 'whateber you returned'
+=> 'whatever you returned'
 ```
 
 If you want to get only the time ...
