@@ -4,7 +4,7 @@
 
 This is a more lightweight alternative to ruby-prof that handles only time measurements.
 
-##Installation
+## Installation
 
 ```
 gem install 'light_stopwatch'
