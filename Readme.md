@@ -10,7 +10,7 @@ This is a more lightweight alternative to ruby-prof that handles only time measu
 gem install 'light_stopwatch'
 ```
 
-##Usage
+## Usage
 
 You can use the `LightStopwatch` module or `LS` as a shortcut
 
@@ -31,7 +31,7 @@ end
 => { :took => 10.00xx, retval => 'whatever you returned' }
 ```
 
-##Customizing output
+## Customizing output
 
 If you're not happy with the default `Operation took:` output or you want to separate multiple measurements you can customize like this:
 
@@ -43,7 +43,7 @@ my_stuff: 10
 => 'whatever you returned'
 ```
 
-##Aggregations
+## Aggregations
 
 If you want to measure a total time spent in a codepath that is called multiple times you need an aggregation.
 
